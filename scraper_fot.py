@@ -119,11 +119,11 @@ def run_scorer_scraper(json_data, soup, url):
 
         # Define file paths
         if team_type == 'home':
-            list_players_csv = r'C:\Users\Public\Documents\Axel\libertadores26-data\goals\csv\listHomePlayers.csv'
-            scorers_csv = r'C:\Users\Public\Documents\Axel\libertadores26-data\goals\csv\homeScorers.csv'
+            list_players_csv = r'C:\Users\Public\Documents\Axel\wcup26\goals\csv\listHomePlayers.csv'
+            scorers_csv = r'C:\Users\Public\Documents\Axel\wcup26\goals\csv\homeScorers.csv'
         else:            
-            list_players_csv = r'C:\Users\Public\Documents\Axel\libertadores26-data\goals\csv\listAwayPlayers.csv'
-            scorers_csv = r'C:\Users\Public\Documents\Axel\libertadores26-data\goals\csv\awayScorers.csv'
+            list_players_csv = r'C:\Users\Public\Documents\Axel\wcup26\goals\csv\listAwayPlayers.csv'
+            scorers_csv = r'C:\Users\Public\Documents\Axel\wcup26\goals\csv\awayScorers.csv'
 
         # Process goal scorers
         goal_scorers = process_scorer_data(json_data, soup, url, team_type)
@@ -261,7 +261,7 @@ def run_match_stats_scraper(json_data, soup, url):
         df = pd.DataFrame([match_data])
 
         # Save to CSV
-        csv_filename = r'C:\Users\Public\Documents\Axel\libertadores26-data\matchStats\csv\fotmob_match_stats.csv'
+        csv_filename = r'C:\Users\Public\Documents\Axel\wcup26\matchStats\csv\fotmob_match_stats.csv'
 
         if os.path.exists(csv_filename):
             df.to_csv(csv_filename, mode='a', header=False, index=False)
@@ -411,7 +411,7 @@ def run_player_stats_scraper(json_data, soup, url):
         # Save to CSV
         match_name = extract_match_name_from_url(url)
         base_csv_filename = f"{match_name}.csv"
-        csv_directory = r'C:\Users\Public\Documents\Axel\libertadores26-data\playerStats\csv\\'
+        csv_directory = r'C:\Users\Public\Documents\Axel\wcup26\playerStats\csv\\'
         os.makedirs(csv_directory, exist_ok=True)
 
         unique_csv_filename = get_unique_filename(csv_directory, base_csv_filename)
@@ -467,7 +467,7 @@ def run_shots_scraper(json_data, soup, url):
 
         # Save to CSV
         match_name = extract_match_name_from_url(url)
-        csv_directory = r'C:\Users\Public\Documents\Axel\libertadores26-data\shots\csv\\'
+        csv_directory = r'C:\Users\Public\Documents\Axel\wcup26\shots\csv\\'
         os.makedirs(csv_directory, exist_ok=True)
 
         base_filename = f"{match_name}.csv"
